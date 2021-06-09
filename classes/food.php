@@ -1,11 +1,14 @@
 <?php
     require_once "database.php";
     class Food extends Database{
-        public function insertFood($food, $date, $category){
-            $sql = "INSERT INTO food (food_name, expiration_date, category_id) VALUES ('$food', '$expiration_date', '$category')";
+        public function insertFood($food_name, $shopping_date, $expiration_date, $category){
+            $sql = "INSERT INTO foods (food_name, shopping_date, expiration_date, category_id) VALUES ('$food_name', '$shopping_date', '$expiration_date', '$category')";
 
             if($this->conn->query($sql)){
-                $category_id = $this->conn->insert_id;
+                header("location: ../views/addFood.php");
+                exit;
+            }else{
+                die("Error inserting food data ".$this->conn->error);
             }
         }
     }

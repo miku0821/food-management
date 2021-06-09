@@ -1,7 +1,10 @@
 <?php
     include "../classes/food.php";
-    include "../classes/category.php";
 
-    $food = $_POST['food'];
-    $date = $_POST['date'];
+    $food_name = $_POST['food'];
+    $shopping_date = $_POST['shopping_date'];
+    $expiration_date = $_POST['expiration_date'];
     $category = $_POST['category'];
+
+    $food = new Food;
+    $food->insertFood($food_name, $shopping_date, $expiration_date, $category);
